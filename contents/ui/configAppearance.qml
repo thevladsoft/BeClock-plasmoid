@@ -48,10 +48,10 @@ Item {
     property string cfg_dateFormat: "shortDate"
     property alias cfg_use24hFormat: use24hFormat.checkedState
     
-    property alias cfg_mincolor1: _min1.text
-    property alias cfg_mincolor2: _min2.text
-    property alias cfg_horacolor1: _hora1.text
-    property alias cfg_horacolor2: _hora2.text
+//     property alias cfg_mincolor1: _min1.text
+//     property alias cfg_mincolor2: _min2.text
+//     property alias cfg_horacolor1: _hora1.text
+//     property alias cfg_horacolor2: _hora2.text
 
     onCfg_fontFamilyChanged: {
         // HACK by the time we populate our model and/or the ComboBox is finished the value is still undefined
@@ -254,76 +254,76 @@ QtLayouts.RowLayout {
             }
         }
 //       QtControls.Label { text: i18n("Para ver los siguientes cambios debe forzar la actualización del reloj\n (cambie el tamaño o espere que cambie la hora/minuto).")}
-    ColorDialog {
-    id: colorDialog
-    title: "Please choose a color"
-    //En el orden de los cuatros botones
-    property int boton
-    onAccepted: {
-//         console.log("You chose: " + colorDialog.color)
-        switch(boton){
-            case 0:
-                _min1.text = colorDialog.color
-                break
-            case 1:
-                _min2.text = colorDialog.color
-                break
-            case 2:
-                _hora1.text = colorDialog.color
-                break
-            case 3:
-                _hora2.text = colorDialog.color
-                break
-            }
-//         Qt.quit()
-    }
-    onRejected: {
-//         console.log("Canceled")
-//         Qt.quit()
-    }
-//     Component.onCompleted: visible = true
-    }
-    QtControls.GroupBox {
-    QtLayouts.Layout.fillWidth: true
-    title: i18n("Disco de los minutos")
-    flat: true
-      QtLayouts.RowLayout {
-//         QtControls.Label { text: i18n("Color del minutero")}
-    Button {
-        text: "Color primario"
-        onClicked: {colorDialog.boton = 0;colorDialog.color = _min1.text;colorDialog.visible = true;}
-    }          
-        QtControls.TextField {
-            id: _min1
-        }
-        Button {
-            text: "Color secundario"
-            onClicked: {colorDialog.boton = 1;colorDialog.color = _min2.text;colorDialog.visible = true;}
-        }
-        QtControls.TextField {
-            id: _min2
-        }
-      } }
-    QtControls.GroupBox {
-    QtLayouts.Layout.fillWidth: true
-    title: i18n("Disco de la hora")
-    flat: true
-      QtLayouts.RowLayout {
-         Button {
-            text: "Color primario"
-            onClicked: {colorDialog.boton = 2;colorDialog.color = _hora1.text;colorDialog.visible = true;}
-        }
-        QtControls.TextField {
-            id: _hora1
-        }
-         Button {
-            text: "Color secundario"
-            onClicked: {colorDialog.boton = 3;colorDialog.color = _hora2.text;colorDialog.visible = true;}
-        }
-        QtControls.TextField {
-            id: _hora2
-        }
-      }}
+//     ColorDialog {
+//     id: colorDialog
+//     title: "Please choose a color"
+//     //En el orden de los cuatros botones
+//     property int boton
+//     onAccepted: {
+// //         console.log("You chose: " + colorDialog.color)
+//         switch(boton){
+//             case 0:
+//                 _min1.text = colorDialog.color
+//                 break
+//             case 1:
+//                 _min2.text = colorDialog.color
+//                 break
+//             case 2:
+//                 _hora1.text = colorDialog.color
+//                 break
+//             case 3:
+//                 _hora2.text = colorDialog.color
+//                 break
+//             }
+// //         Qt.quit()
+//     }
+//     onRejected: {
+// //         console.log("Canceled")
+// //         Qt.quit()
+//     }
+// //     Component.onCompleted: visible = true
+//     }
+//     QtControls.GroupBox {
+//     QtLayouts.Layout.fillWidth: true
+//     title: i18n("Disco de los minutos")
+//     flat: true
+//       QtLayouts.RowLayout {
+// //         QtControls.Label { text: i18n("Color del minutero")}
+//     Button {
+//         text: "Color primario"
+//         onClicked: {colorDialog.boton = 0;colorDialog.color = _min1.text;colorDialog.visible = true;}
+//     }          
+//         QtControls.TextField {
+//             id: _min1
+//         }
+//         Button {
+//             text: "Color secundario"
+//             onClicked: {colorDialog.boton = 1;colorDialog.color = _min2.text;colorDialog.visible = true;}
+//         }
+//         QtControls.TextField {
+//             id: _min2
+//         }
+//       } }
+//     QtControls.GroupBox {
+//     QtLayouts.Layout.fillWidth: true
+//     title: i18n("Disco de la hora")
+//     flat: true
+//       QtLayouts.RowLayout {
+//          Button {
+//             text: "Color primario"
+//             onClicked: {colorDialog.boton = 2;colorDialog.color = _hora1.text;colorDialog.visible = true;}
+//         }
+//         QtControls.TextField {
+//             id: _hora1
+//         }
+//          Button {
+//             text: "Color secundario"
+//             onClicked: {colorDialog.boton = 3;colorDialog.color = _hora2.text;colorDialog.visible = true;}
+//         }
+//         QtControls.TextField {
+//             id: _hora2
+//         }
+//       }}
     }
     
 

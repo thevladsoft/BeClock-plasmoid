@@ -703,8 +703,8 @@ Item {
             // Animations on properties start running by default
             running: false
             loops: 2 // The animation is set to loop twice
-            NumberAnimation { from: 0; to: timeLabel.width; duration: 400; easing.type: Easing.InOutQuad }
-            NumberAnimation { from: timeLabel.width; to: 0; duration: 400; easing.type: Easing.InOutQuad }
+            NumberAnimation { from: 0; to: timeLabel.width*2; duration: 400; easing.type: Easing.InOutQuad }
+            NumberAnimation { from: timeLabel.width*2; to: 0; duration: 400; easing.type: Easing.InOutQuad }
             PauseAnimation { duration: 250 } // This puts a bit of time between the loop
         }
 
