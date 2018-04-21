@@ -41,6 +41,7 @@ Item {
     property alias cfg_mincolor2: _min2.text
     property alias cfg_horacolor1: _hora1.text
     property alias cfg_horacolor2: _hora2.text
+    property alias cfg_destello: flash.checked
 
 
 
@@ -119,7 +120,12 @@ Item {
         }
       }}
       
-      QtControls.Label { text: i18n("You can write 'transparent' as the color")}
+      QtControls.Label { text: i18n("You can write 'transparent' as the color\n")}
+      
+      QtControls.CheckBox {
+           id: flash
+           text: i18n('Show a "flash" every hour')
+      }
       
     }
     

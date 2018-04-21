@@ -98,6 +98,7 @@ Item {
     property string mincolor2: plasmoid.configuration.mincolor2
     property string horacolor1: plasmoid.configuration.horacolor1
     property string horacolor2: plasmoid.configuration.horacolor2
+    property bool destello_actived: plasmoid.configuration.destello
     
      ProgressCircle {
         id: recmin
@@ -724,7 +725,7 @@ Item {
         
         if (Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m") == 0 && Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s") < 2){
 //             destello.width = timeLabel.width;  
-            xAnim.running = true
+            if (destello_actived){xAnim.running = true}
 
         }
 

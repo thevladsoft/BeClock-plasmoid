@@ -84,5 +84,9 @@
       <label>Color secundario de la hora.</label>
       <default>white</default>
     </entry>
+    <entry name="destello" type="Bool">
+      <label>Ver un destello </label>
+      <default>true</default>
+    </entry>
   </group>
 </kcfg>
