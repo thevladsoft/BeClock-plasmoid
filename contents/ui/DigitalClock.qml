@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.5
+import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as Components
@@ -379,9 +379,11 @@ Item {
                 Layout.fillHeight: false
                 Layout.fillWidth: false
                 Layout.minimumWidth: units.gridUnit * 3
-                Layout.maximumWidth: Math.max(labelsFlow.width, dateLabel.width)
+                /*Vlad: Needed on plasma-desktop 5.12.4*/
+//                 Layout.maximumWidth: Math.max(labelsFlow.width, dateLabel.width)
                 Layout.minimumHeight: units.gridUnit * 3
-                Layout.maximumHeight: main.showDate ? labelsFlow.height + dateLabel.height : labelsFlow.height
+                /*Vlad: Needed on plasma-desktop 5.12.4*/
+//                 Layout.maximumHeight: main.showDate ? labelsFlow.height + dateLabel.height : labelsFlow.height
             }
 
             PropertyChanges {
