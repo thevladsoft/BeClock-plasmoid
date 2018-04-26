@@ -44,7 +44,7 @@ Item {
     property alias cfg_destello: flash.checked
     property alias cfg_imagenbackground: imagenes.imagen
 
-    property var logos: ["" ,"images/arch.png","images/debian.png","images/fedora.png","images/kde.png" ,"images/kubuntu.png","images/suse.png","images/ubuntu.png" ]
+    property var logos: ["" ,"images/arch.png","images/debian.png","images/fedora.png","images/kde.png" ,"images/kubuntu.png","images/neon.png" ,"images/suse.png","images/ubuntu.png" ]
 
 
 
@@ -162,7 +162,7 @@ Item {
               currentIndex: (logos.indexOf(plasmoid.configuration.imagenbackground) >= 0)?logos.indexOf(plasmoid.configuration.imagenbackground):model.indexOf("Other...")
               //width:100
               property var imagen//: (currentText == "Other...")?imageother.text:model[currentIndex]["logo"]
-              model: ["No background","Arch logo", "Debian logo","Fedora logo","Kde logo","Kubuntu logo","Suse logo","Ubuntu logo","Other..."]
+              model: ["No background","Arch logo", "Debian logo","Fedora logo","Kde logo","Kubuntu logo","Neon logo","Suse logo","Ubuntu logo","Other..."]
 
               /*onCurrentIndexChanged: {
                   var current = model.get(currentIndex)
