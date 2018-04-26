@@ -24,6 +24,8 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as Components
 import org.kde.plasma.private.digitalclock 1.0
 
+import QtGraphicalEffects 1.0
+
 Item {
     id: main
 
@@ -52,6 +54,28 @@ Item {
         radius: width/2.
         opacity: 0.3
      }    
+     Image {
+        id: fondoimage
+        width: fondo.width
+        height: fondo.height
+        x:fondo.x
+        y:fondo.y
+        //opacity: 0.6
+        fillMode: Image.PreserveAspectFit
+        source: imagenbackground
+        visible: false
+     }
+     OpacityMask {
+         anchors.fill: fondoimage
+         source: fondoimage
+         opacity: 0.4
+         maskSource: Rectangle {
+             width: fondoimage.width
+             height: fondoimage.height
+             radius: width/2.
+             //visible: false
+         }
+     }
      
        Components.Label  {
             id: timeLabelshadow
@@ -99,6 +123,7 @@ Item {
     property string horacolor1: plasmoid.configuration.horacolor1
     property string horacolor2: plasmoid.configuration.horacolor2
     property bool destello_actived: plasmoid.configuration.destello
+    property string imagenbackground: plasmoid.configuration.imagenbackground
     
      ProgressCircle {
         id: recmin

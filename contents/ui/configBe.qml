@@ -42,7 +42,9 @@ Item {
     property alias cfg_horacolor1: _hora1.text
     property alias cfg_horacolor2: _hora2.text
     property alias cfg_destello: flash.checked
+    property alias cfg_imagenbackground: imagenes.imagen
 
+    property var logos: ["" ,"images/arch.png","images/debian.png","images/fedora.png","images/kde.png" ,"images/kubuntu.png","images/suse.png","images/ubuntu.png" ]
 
 
 
@@ -78,6 +80,26 @@ Item {
     }
 //     Component.onCompleted: visible = true
     }
+
+    FileDialog {
+        id: fileDialog
+        title: "Please choose an image"
+        folder: shortcuts.home
+        nameFilters: [ "Image files (*.jpg *.png *.svg)", "All files (*)" ]
+        onAccepted: {
+            //console.log("You chose: " + fileDialog.fileUrls)
+            imageother.text = fileUrl
+            imagenes.imagen = imageother.text
+            print(fileUrl)
+            Qt.quit()
+        }
+        onRejected: {
+            //console.log("Canceled")
+            Qt.quit()
+        }
+        //Component.onCompleted: visible = true
+    }
+
     QtControls.GroupBox {
     QtLayouts.Layout.fillWidth: true
     title: i18n("Minute rings")
@@ -126,6 +148,54 @@ Item {
            id: flash
            text: i18n('Show a "flash" every hour')
       }
+
+      //QtControls.GroupBox {
+      //QtLayouts.Layout.fillWidth: true
+      //title: i18n("Background")
+      //flat: true
+      QtControls.Label { text: i18n("\nBackground")}
+        QtLayouts.ColumnLayout {
+
+          QtControls.ComboBox {
+              id: imagenes
+              QtLayouts.Layout.fillWidth: true
+              currentIndex: (logos.indexOf(plasmoid.configuration.imagenbackground) >= 0)?logos.indexOf(plasmoid.configuration.imagenbackground):model.indexOf("Other...")
+              //width:100
+              property var imagen//: (currentText == "Other...")?imageother.text:model[currentIndex]["logo"]
+              model: ["No background","Arch logo", "Debian logo","Fedora logo","Kde logo","Kubuntu logo","Suse logo","Ubuntu logo","Other..."]
+
+              /*onCurrentIndexChanged: {
+                  var current = model.get(currentIndex)
+                  if (current) {
+                      cfg_fontFamily = current.value
+                      appearancePage.configurationChanged()
+                  }
+              }*/
+              //onCurrentIndexChanged: console.debug(imagenesList.get(imagenes.currentIndex).text )
+              onCurrentIndexChanged: {(currentText == "Other...")?imagen = imageother.text:imagen = logos[imagenes.currentIndex]
+              print(imagenes.currentIndex)}
+          }
+          QtLayouts.RowLayout {
+              QtControls.TextField{
+                  id: imageother
+                  QtLayouts.Layout.fillWidth: true
+                  //width:1600
+                  placeholderText: qsTr("Choose a file or use an url")
+                  text : (logos.indexOf(plasmoid.configuration.imagenbackground) >= 0)?"":plasmoid.configuration.imagenbackground
+                  visible: (imagenes.currentText == "Other...")?true:false
+                  onTextChanged: imagenes.imagen = imageother.text
+              }
+              Button {
+                 //QtLayouts.Layout.fillWidth: true
+                 text: "..."
+                 //width: 10
+                 visible: (imagenes.currentText == "Other...")?true:false
+                 onClicked: {fileDialog.visible = true;}
+             }
+
+          }
+        }
+      //}
       
     }
     

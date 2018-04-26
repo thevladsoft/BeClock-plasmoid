@@ -88,5 +88,9 @@
       <label>Ver un destello </label>
       <default>true</default>
     </entry>
+    <entry name="imagenbackground" type="String">
+      <label>Imagen del fondo.</label>
+      <default></default>
+    </entry>
   </group>
 </kcfg>
