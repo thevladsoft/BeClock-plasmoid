@@ -91,7 +91,8 @@ Item {
             fontSizeMode: timeLabel.fontSizeMode
             font.pointSize: timeLabel.font.pointSize
             opacity: 0.5
-            color: "black"
+//             color: "black"
+            color: plasmoid.configuration.textshadow
 //             fontSize: timeLabel.fontSize
 //             font.size: timeLabel.font.size
 //             font.color:"black"
@@ -112,7 +113,8 @@ Item {
             fontSizeMode: dateLabel.fontSizeMode
             font.pointSize: dateLabel.font.pointSize
             opacity: 0.5
-            color: "black"
+//             color: "black"
+            color: plasmoid.configuration.textshadow
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             visible: dateLabel.visible
@@ -122,9 +124,43 @@ Item {
     property string mincolor2: plasmoid.configuration.mincolor2
     property string horacolor1: plasmoid.configuration.horacolor1
     property string horacolor2: plasmoid.configuration.horacolor2
+    property string secondcolor1: plasmoid.configuration.secondcolor1
+    property string secondcolor2: plasmoid.configuration.secondcolor2
+    property bool secondsring: plasmoid.configuration.showsecondsring
     property bool destello_actived: plasmoid.configuration.destello
     property string imagenbackground: plasmoid.configuration.imagenbackground
     
+    ProgressCircle {
+        id: recsec
+        y:timeLabel.width/2.-size/2.
+        x:y
+        size: timeLabel.width * 1.15
+        lineWidth: 8
+        colorCircle: secondcolor1
+        colorBackground: "transparent"
+        showBackground: true
+        arcBegin: 0
+        arcEnd: 180
+        opacity: 0.7
+        visible: secondsring
+        animationDuration: 500
+     }
+     ProgressCircle {
+        id: recsec2
+        y:timeLabel.width/2.-size/2.
+        x:y
+        size: timeLabel.width * 1.15
+        lineWidth: 2
+        colorCircle: secondcolor2
+        colorBackground: "transparent"
+        showBackground: true
+        arcBegin: 0.5
+        arcEnd: 181
+        opacity: 0.7
+        visible: secondsring
+        animationDuration: 500
+     }
+     
      ProgressCircle {
         id: recmin
         x:0
@@ -544,7 +580,7 @@ Item {
 
         Components.Label  {
             id: timeLabel
-
+            color: plasmoid.configuration.textcolor
             font {
                 family: plasmoid.configuration.fontFamily || theme.defaultFont.family
                 weight: plasmoid.configuration.boldText ? Font.Bold : theme.defaultFont.weight
@@ -571,6 +607,7 @@ Item {
 
         Components.Label {
             id: timezoneLabel
+            color: plasmoid.configuration.textcolor
 
             font.weight: timeLabel.font.weight
             font.italic: timeLabel.font.italic
@@ -585,6 +622,7 @@ Item {
 
     Components.Label {
         id: dateLabel
+        color: plasmoid.configuration.textcolor
 
         anchors.top: labelsFlow.bottom
         visible: main.showDate && !main.tooSmall
@@ -744,6 +782,11 @@ Item {
 //         print(Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "hap"))
         recmin.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6;
         recmin2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6+0.5;
+        
+        if (secondsring){
+            recsec.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")*6;
+            recsec2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")*6+0.5;
+        }
         
         rechour.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30;
         rechour2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30+0.5;

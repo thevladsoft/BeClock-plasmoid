@@ -54,6 +54,14 @@
       <default>true</default>
     </entry>
     
+    <entry name="textcolor" type="String">
+      <label>Color text.</label>
+      <default>white</default>
+    </entry>
+    <entry name="textshadow" type="String">
+      <label>Color shadow.</label>
+      <default>black</default>
+    </entry>
     
     <entry name="showWeekNumbers" type="Bool">
       <label>Whether the calendar should show week numbers.</label>
@@ -84,6 +92,20 @@
       <label>Color secundario de la hora.</label>
       <default>white</default>
     </entry>
+    
+    <entry name="showsecondsring" type="Bool">
+      <label>Whether seconds ring should be shown in the clock.</label>
+      <default>false</default>
+    </entry>
+    <entry name="secondcolor1" type="String">
+      <label>Color de los segundos.</label>
+      <default>black</default>
+    </entry>
+    <entry name="secondcolor2" type="String">
+      <label>Color secundario de los segundos.</label>
+      <default>white</default>
+    </entry>
+    
     <entry name="destello" type="Bool">
       <label>Ver un destello </label>
       <default>true</default>

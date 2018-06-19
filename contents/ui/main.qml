@@ -76,8 +76,8 @@ Item {
         id: dataSource
         engine: "time"
         connectedSources: allTimezones
-        interval: plasmoid.configuration.showSeconds ? 1000 : 60000
-        intervalAlignment: plasmoid.configuration.showSeconds ? PlasmaCore.Types.NoAlignment : PlasmaCore.Types.AlignToMinute
+        interval: (plasmoid.configuration.showSeconds || plasmoid.configuration.showsecondsring) ? 1000 : 60000
+        intervalAlignment: (plasmoid.configuration.showSeconds || plasmoid.configuration.showsecondsring) ? PlasmaCore.Types.NoAlignment : PlasmaCore.Types.AlignToMinute
     }
 
     function setDateFormatString() {

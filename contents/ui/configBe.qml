@@ -36,12 +36,17 @@ Item {
     signal configurationChanged
 
 
+    property alias cfg_textcolor: _text1.text
+    property alias cfg_textshadow: _text2.text
     
     property alias cfg_mincolor1: _min1.text
     property alias cfg_mincolor2: _min2.text
     property alias cfg_horacolor1: _hora1.text
     property alias cfg_horacolor2: _hora2.text
     property alias cfg_destello: flash.checked
+    property alias cfg_secondcolor1: _seconds1.text
+    property alias cfg_secondcolor2: _seconds2.text
+    property alias cfg_showsecondsring: secondsring.checked
     property alias cfg_imagenbackground: imagenes.imagen
 
     property var logos: ["" ,"images/arch.png","images/debian.png","images/fedora.png","images/kde.png" ,"images/kubuntu.png","images/neon.png" ,"images/suse.png","images/ubuntu.png" ]
@@ -71,6 +76,18 @@ Item {
             case 3:
                 _hora2.text = colorDialog.color
                 break
+            case 4:
+                _seconds1.text = colorDialog.color
+                break
+            case 5:
+                _seconds2.text = colorDialog.color
+                break
+            case 6:
+                _text1.text = colorDialog.color
+                break
+            case 7:
+                _text2.text = colorDialog.color
+                break
             }
 //         Qt.quit()
     }
@@ -99,55 +116,108 @@ Item {
         }
         //Component.onCompleted: visible = true
     }
+    
+    QtControls.GroupBox {
+        QtLayouts.Layout.fillWidth: true
+        title: i18n("Text")
+        flat: true
+        QtLayouts.RowLayout {
+            Button {
+                text: i18n("Main color")
+                onClicked: {colorDialog.boton = 6;colorDialog.color = _hora1.text;colorDialog.visible = true;}
+            }
+            QtControls.TextField {
+                id: _text1
+            }
+            Button {
+                text: i18n("Shadow color")
+                onClicked: {colorDialog.boton = 7;colorDialog.color = _hora2.text;colorDialog.visible = true;}
+            }
+            QtControls.TextField {
+                id: _text2
+            }
+        }
+    }
 
     QtControls.GroupBox {
-    QtLayouts.Layout.fillWidth: true
-    title: i18n("Minute rings")
-    flat: true
-      QtLayouts.RowLayout {
-//         QtControls.Label { text: i18n("Color del minutero")}
-    Button {
-        text: i18n("Main color")
-        onClicked: {colorDialog.boton = 0;colorDialog.color = _min1.text;colorDialog.visible = true;}
-    }          
-        QtControls.TextField {
-            id: _min1
-        }
+        QtLayouts.Layout.fillWidth: true
+        title: i18n("Minute rings")
+        flat: true
+        QtLayouts.RowLayout {
+    //         QtControls.Label { text: i18n("Color del minutero")}
         Button {
-            text: i18n("Shadow color")
-            onClicked: {colorDialog.boton = 1;colorDialog.color = _min2.text;colorDialog.visible = true;}
-        }
-        QtControls.TextField {
-            id: _min2
-        }
-      } }
-    QtControls.GroupBox {
-    QtLayouts.Layout.fillWidth: true
-    title: i18n("Hour rings")
-    flat: true
-      QtLayouts.RowLayout {
-         Button {
             text: i18n("Main color")
-            onClicked: {colorDialog.boton = 2;colorDialog.color = _hora1.text;colorDialog.visible = true;}
+            onClicked: {colorDialog.boton = 0;colorDialog.color = _min1.text;colorDialog.visible = true;}
+        }          
+            QtControls.TextField {
+                id: _min1
+            }
+            Button {
+                text: i18n("Shadow color")
+                onClicked: {colorDialog.boton = 1;colorDialog.color = _min2.text;colorDialog.visible = true;}
+            }
+            QtControls.TextField {
+                id: _min2
+            }
         }
-        QtControls.TextField {
-            id: _hora1
-        }
-         Button {
-            text: i18n("Shadow color")
-            onClicked: {colorDialog.boton = 3;colorDialog.color = _hora2.text;colorDialog.visible = true;}
-        }
-        QtControls.TextField {
-            id: _hora2
-        }
-      }}
+    }
       
-      QtControls.Label { text: i18n("You can write 'transparent' as the color\n")}
-      
-      QtControls.CheckBox {
-           id: flash
-           text: i18n('Show a "flash" every hour')
-      }
+    QtControls.GroupBox {
+        QtLayouts.Layout.fillWidth: true
+        title: i18n("Hour rings")
+        flat: true
+        QtLayouts.RowLayout {
+            Button {
+                text: i18n("Main color")
+                onClicked: {colorDialog.boton = 2;colorDialog.color = _hora1.text;colorDialog.visible = true;}
+            }
+            QtControls.TextField {
+                id: _hora1
+            }
+            Button {
+                text: i18n("Shadow color")
+                onClicked: {colorDialog.boton = 3;colorDialog.color = _hora2.text;colorDialog.visible = true;}
+            }
+            QtControls.TextField {
+                id: _hora2
+            }
+        }
+    }
+        
+    QtControls.CheckBox {
+        id: secondsring
+        text: i18n('Show a ring for the seconds')
+    }
+    
+    QtControls.GroupBox {
+        QtLayouts.Layout.fillWidth: true
+        title: i18n("Seconds rings")
+        flat: true
+        visible: secondsring.checked
+        QtLayouts.RowLayout {
+            Button {
+                text: i18n("Main color")
+                onClicked: {colorDialog.boton = 4;colorDialog.color = _seconds1.text;colorDialog.visible = true;}
+            }
+            QtControls.TextField {
+                id: _seconds1
+            }
+            Button {
+                text: i18n("Shadow color")
+                onClicked: {colorDialog.boton = 5;colorDialog.color = _seconds2.text;colorDialog.visible = true;}
+            }
+            QtControls.TextField {
+                id: _seconds2
+            }
+        }
+    }
+    
+    QtControls.Label { text: i18n("You can write 'transparent' as the color\n")}
+    
+    QtControls.CheckBox {
+        id: flash
+        text: i18n('Show a "flash" every hour')
+    }
 
       //QtControls.GroupBox {
       //QtLayouts.Layout.fillWidth: true
