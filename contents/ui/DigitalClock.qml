@@ -93,6 +93,7 @@ Item {
             opacity: 0.5
 //             color: "black"
             color: plasmoid.configuration.textshadow
+            visible: plasmoid.configuration.textshadow == "transparent" ? 0 : 1
 //             fontSize: timeLabel.fontSize
 //             font.size: timeLabel.font.size
 //             font.color:"black"
@@ -107,6 +108,7 @@ Item {
             x:dateLabel.x+width*0.05
             y:dateLabel.y+height*0.05
             anchors.horizontalCenter: main.horizontalCenter
+            anchors.top: labelsFlow.bottom
             font.family: dateLabel.font.family
             font.weight: dateLabel.font.weight
             font.italic: dateLabel.font.italic
@@ -117,7 +119,7 @@ Item {
             color: plasmoid.configuration.textshadow
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            visible: dateLabel.visible
+            visible: plasmoid.configuration.textshadow == "transparent" ? 0 : 1
         }
     
     property string mincolor1: plasmoid.configuration.mincolor1
@@ -581,6 +583,7 @@ Item {
         Components.Label  {
             id: timeLabel
             color: plasmoid.configuration.textcolor
+            visible: plasmoid.configuration.textcolor == "transparent" ? 0 : 1
             font {
                 family: plasmoid.configuration.fontFamily || theme.defaultFont.family
                 weight: plasmoid.configuration.boldText ? Font.Bold : theme.defaultFont.weight
@@ -625,7 +628,7 @@ Item {
         color: plasmoid.configuration.textcolor
 
         anchors.top: labelsFlow.bottom
-        visible: main.showDate && !main.tooSmall
+        visible: plasmoid.configuration.textcolor == "transparent" ? 0 : (main.showDate && !main.tooSmall)
 
         font.family: timeLabel.font.family
         font.weight: timeLabel.font.weight
