@@ -124,6 +124,8 @@ Item {
         QtLayouts.RowLayout {
             Button {
                 text: i18n("Main color")
+				iconName: "org.kde.plasma.colorpicker"
+				tooltip: "Click to choose"
                 onClicked: {colorDialog.boton = 6;colorDialog.color = _hora1.text;colorDialog.visible = true;}
             }
             QtControls.TextField {
@@ -131,6 +133,8 @@ Item {
             }
             Button {
                 text: i18n("Shadow color")
+				iconName: "org.kde.plasma.colorpicker"
+				tooltip: "Click to choose"
                 onClicked: {colorDialog.boton = 7;colorDialog.color = _hora2.text;colorDialog.visible = true;}
             }
             QtControls.TextField {
@@ -147,6 +151,8 @@ Item {
     //         QtControls.Label { text: i18n("Color del minutero")}
         Button {
             text: i18n("Main color")
+				iconName: "org.kde.plasma.colorpicker"
+				tooltip: "Click to choose"
             onClicked: {colorDialog.boton = 0;colorDialog.color = _min1.text;colorDialog.visible = true;}
         }          
             QtControls.TextField {
@@ -154,6 +160,8 @@ Item {
             }
             Button {
                 text: i18n("Shadow color")
+				iconName: "org.kde.plasma.colorpicker"
+				tooltip: "Click to choose"
                 onClicked: {colorDialog.boton = 1;colorDialog.color = _min2.text;colorDialog.visible = true;}
             }
             QtControls.TextField {
@@ -169,6 +177,8 @@ Item {
         QtLayouts.RowLayout {
             Button {
                 text: i18n("Main color")
+				iconName: "org.kde.plasma.colorpicker"
+				tooltip: "Click to choose"
                 onClicked: {colorDialog.boton = 2;colorDialog.color = _hora1.text;colorDialog.visible = true;}
             }
             QtControls.TextField {
@@ -176,6 +186,8 @@ Item {
             }
             Button {
                 text: i18n("Shadow color")
+				iconName: "org.kde.plasma.colorpicker"
+				tooltip: "Click to choose"
                 onClicked: {colorDialog.boton = 3;colorDialog.color = _hora2.text;colorDialog.visible = true;}
             }
             QtControls.TextField {
@@ -197,6 +209,8 @@ Item {
         QtLayouts.RowLayout {
             Button {
                 text: i18n("Main color")
+				iconName: "org.kde.plasma.colorpicker"
+				tooltip: "Click to choose"
                 onClicked: {colorDialog.boton = 4;colorDialog.color = _seconds1.text;colorDialog.visible = true;}
             }
             QtControls.TextField {
@@ -204,6 +218,8 @@ Item {
             }
             Button {
                 text: i18n("Shadow color")
+				iconName: "org.kde.plasma.colorpicker"
+				tooltip: "Click to choose"
                 onClicked: {colorDialog.boton = 5;colorDialog.color = _seconds2.text;colorDialog.visible = true;}
             }
             QtControls.TextField {

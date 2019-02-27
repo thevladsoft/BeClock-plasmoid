@@ -34,12 +34,12 @@ ConfigModel {
     }
     ConfigCategory {
          name: i18n("BeClock")
-         icon: "preferences-desktop-color"
+         icon: "clock"
          source: "configBe.qml"
     }
     ConfigCategory {
          name: i18n("BeClock Adv.")
-         icon: "preferences-desktop-color"
+         icon: "clock"
          source: "configBe2.qml"
     }
     ConfigCategory {
