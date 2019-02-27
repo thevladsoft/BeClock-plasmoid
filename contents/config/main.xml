@@ -105,6 +105,32 @@
       <label>Color secundario de los segundos.</label>
       <default>white</default>
     </entry>
+	
+	<entry name="minsize" type="UInt">
+      <label>Width of mins.</label>
+      <default>10</default>
+    </entry>
+	<entry name="hoursize" type="UInt">
+      <label>Width of hours.</label>
+      <default>10</default>
+    </entry>
+	<entry name="secsize" type="UInt">
+      <label>Width of secs.</label>
+      <default>10</default>
+    </entry>
+	
+	<entry name="minradius" type="UInt">
+      <label>Radius of mins.</label>
+      <default>85</default>
+    </entry>
+	<entry name="hourradius" type="UInt">
+      <label>Radius of hours.</label>
+      <default>70</default>
+    </entry>
+	<entry name="secradius" type="UInt">
+      <label>Radius of secs.</label>
+      <default>100</default>
+    </entry>
     
     <entry name="destello" type="Bool">
       <label>Ver un destello </label>

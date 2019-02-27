@@ -38,6 +38,11 @@ ConfigModel {
          source: "configBe.qml"
     }
     ConfigCategory {
+         name: i18n("BeClock Adv.")
+         icon: "preferences-desktop-color"
+         source: "configBe2.qml"
+    }
+    ConfigCategory {
         name: i18n("Calendar")
         icon: "view-calendar"
         source: "configCalendar.qml"

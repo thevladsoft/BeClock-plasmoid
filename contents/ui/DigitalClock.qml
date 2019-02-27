@@ -136,8 +136,8 @@ Item {
         id: recsec
         y:timeLabel.width/2.-size/2.
         x:y
-        size: timeLabel.width * 1.15
-        lineWidth: 8
+        size: (plasmoid.configuration.secradius/100.)*parent.width//timeLabel.width * 1.15
+        lineWidth: (plasmoid.configuration.secsize/100.)*0.5*parent.width
         colorCircle: secondcolor1
         colorBackground: "transparent"
         showBackground: true
@@ -151,8 +151,8 @@ Item {
         id: recsec2
         y:timeLabel.width/2.-size/2.
         x:y
-        size: timeLabel.width * 1.15
-        lineWidth: 2
+        size: recsec.size//timeLabel.width * 1.15
+        lineWidth: 0.25*recsec.lineWidth
         colorCircle: secondcolor2
         colorBackground: "transparent"
         showBackground: true
@@ -165,10 +165,10 @@ Item {
      
      ProgressCircle {
         id: recmin
-        x:0
-        y:x
-        size: timeLabel.width
-        lineWidth: 8
+        y:timeLabel.width/2.-size/2.
+        x:y
+        size: (plasmoid.configuration.minradius/100.)*parent.width//timeLabel.width
+        lineWidth: (plasmoid.configuration.minsize/100.)*0.5*parent.width
         colorCircle: mincolor1
         colorBackground: "transparent"
         showBackground: true
@@ -178,10 +178,10 @@ Item {
      }
      ProgressCircle {
         id: recmin2
-        x:0
-        y:x
-        size: timeLabel.width
-        lineWidth: 2
+        y:timeLabel.width/2.-size/2.
+        x:y
+        size: recmin.size//timeLabel.width
+        lineWidth: 0.25*recmin.lineWidth
         colorCircle: mincolor2
         colorBackground: "transparent"
         showBackground: true
@@ -192,10 +192,10 @@ Item {
     
      ProgressCircle {
          id: rechour
-         size: timeLabel.width*0.85
+         size: (plasmoid.configuration.hourradius/100.)*parent.width//timeLabel.width*0.85
          y: timeLabel.width/2.-size/2.
          x:y
-         lineWidth: 7
+         lineWidth: (plasmoid.configuration.hoursize/100.)*0.5*parent.width
          colorCircle: horacolor1
          colorBackground: "transparent"
          showBackground: true
@@ -205,10 +205,10 @@ Item {
      }
      ProgressCircle {
         id: rechour2
-        size: timeLabel.width*0.85
+        size: rechour.size//timeLabel.width*0.85
         y: timeLabel.width/2.-size/2.
         x:y
-        lineWidth: 2
+        lineWidth: 0.25*rechour.lineWidth
         colorCircle: horacolor2
         colorBackground: "transparent"
         showBackground: true

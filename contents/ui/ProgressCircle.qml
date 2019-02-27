@@ -29,6 +29,9 @@ Item {
     onArcEndChanged: canvas.requestPaint()
     onColorCircleChanged: canvas.requestPaint()
     onColorBackgroundChanged: canvas.requestPaint()
+	
+	onSizeChanged: canvas.requestPaint()
+	onLineWidthChanged: canvas.requestPaint()
 
     Behavior on arcBegin {
        id: animationArcBegin
