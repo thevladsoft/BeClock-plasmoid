@@ -783,16 +783,76 @@ Item {
     {
         var doCorrections = false;
 //         print(Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "hap"))
-        recmin.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6;
-        recmin2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6+0.5;
+		if (Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m") == 0){
+					recmin.arcEnd = 360;
+					recmin.arcBegin = 360;
+					recmin2.arcEnd = 360;
+					recmin2.arcBegin = 360;
+			}else{
+				   if(Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m") == 1){
+					       recmin.animationDuration = 0;
+						   recmin.arcEnd = 0;
+						   recmin.arcBegin = 0;
+						   recmin2.animationDuration = 0;
+						   recmin2.arcEnd = 0;
+						   recmin2.arcBegin = 0;
+				   }
+				   recmin.animationDuration = 500;
+				   recmin.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6;
+				   recmin2.animationDuration = 500;
+				   recmin2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6+0.5;
+				   
+		}
+//         recmin.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6;
+//         recmin2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6+0.5;
         
         if (secondsring){
-            recsec.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")*6;
-            recsec2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")*6+0.5;
+			if (Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s") == 0){
+					recsec.arcEnd = 360;
+					recsec.arcBegin = 360;
+					recsec2.arcEnd = 360;
+					recsec2.arcBegin = 360;
+			}else{
+				   if(Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s") == 1){
+					       recsec.animationDuration = 0;
+						   recsec.arcEnd = 0;
+						   recsec.arcBegin = 0;
+						   recsec2.animationDuration = 0;
+						   recsec2.arcEnd = 0;
+						   recsec2.arcBegin = 0;
+				   }
+				   recsec.animationDuration = 500;
+				   recsec.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")*6;
+				   recsec2.animationDuration = 500;
+				   recsec2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")*6+0.5;
+				   
+			}
+//             recsec.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")*6;
+//             recsec2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")*6+0.5;
         }
         
-        rechour.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30;
-        rechour2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30+0.5;
+        if (Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h") == 0){
+					rechour.arcEnd = 360;
+					rechour.arcBegin = 360;
+					rechour2.arcEnd = 360;
+					rechour2.arcBegin = 360;
+			}else{
+				   if(Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h") == 1){
+					       rechour.animationDuration = 0;
+						   rechour.arcEnd = 0;
+						   rechour.arcBegin = 0;
+						   rechour2.animationDuration = 0;
+						   rechour2.arcEnd = 0;
+						   rechour2.arcBegin = 0;
+				   }
+				   rechour.animationDuration = 500;
+				   rechour.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30;
+				   rechour2.animationDuration = 500;
+				   rechour2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30+0.5;
+				   
+		}
+//         rechour.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30;
+//         rechour2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30+0.5;
         
         if (Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m") == 0 && Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s") < 2){
 //             destello.width = timeLabel.width;  
