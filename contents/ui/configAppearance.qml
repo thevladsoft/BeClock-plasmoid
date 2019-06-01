@@ -39,6 +39,8 @@ Item {
     property alias cfg_boldText: boldCheckBox.checked
     property string cfg_timeFormat: ""
     property alias cfg_italicText: italicCheckBox.checked
+    
+    property alias cfg_datefontsize: datefontsize.value
 
     property alias cfg_showLocalTimezone: showLocalTimezone.checked
     property alias cfg_displayTimezoneAsCode: timezoneCodeRadio.checked
@@ -176,6 +178,19 @@ QtLayouts.RowLayout {
                             }
                         }
                     } }
+                    
+                    QtLayouts.RowLayout {
+						QtControls.Label {
+		                        text: i18n("Date font size:")
+	                    }
+	                    SpinBox {
+		                    id: datefontsize
+		                    
+		                    suffix: i18n("pt")
+		                    minimumValue: 2
+// 		                    maximumValue: 1000000
+		                }
+					}
 
                 QtControls.CheckBox {
                     id: showSeconds

@@ -633,7 +633,7 @@ Item {
         font.family: timeLabel.font.family
         font.weight: timeLabel.font.weight
         font.italic: timeLabel.font.italic
-        font.pointSize: 12
+        font.pointSize: plasmoid.configuration.datefontsize//12
         style: Text.Raised;
         minimumPixelSize: 0
 
