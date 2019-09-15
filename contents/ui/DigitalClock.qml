@@ -52,7 +52,7 @@ Item {
         y:x
         color: "gray"
         radius: width/2.
-        opacity: 0.3
+        opacity: plasmoid.configuration.shadowbackground?0.3:0.
      }    
      Image {
         id: fondoimage

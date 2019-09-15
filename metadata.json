@@ -15,7 +15,7 @@
         "ServiceTypes": [
             "Plasma/Applet"
         ],
-        "Version": "3.0+BE-3.3"
+        "Version": "3.0+BE-3.4"
     },
     "X-KDE-ParentApp": "",
     "X-Plasma-API": "declarativeappletscript",

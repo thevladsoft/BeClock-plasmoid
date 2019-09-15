@@ -48,7 +48,8 @@ Item {
     property alias cfg_secondcolor2: _seconds2.text
     property alias cfg_showsecondsring: secondsring.checked
     property alias cfg_imagenbackground: imagenes.imagen
-
+    property alias cfg_shadowbackground: shadowbackground.checked
+        
     property var logos: ["" ,"images/arch.png","images/debian.png","images/fedora.png","images/kde.png" ,"images/kubuntu.png","images/neon.png" ,"images/suse.png","images/ubuntu.png" ]
 
 
@@ -279,6 +280,10 @@ Item {
                  onClicked: {fileDialog.visible = true;}
              }
 
+          }
+          QtControls.CheckBox {
+                id: shadowbackground
+                text: i18n('Background shadow')
           }
         }
       //}
