@@ -167,11 +167,13 @@ QtLayouts.RowLayout {
                 }
                 QtControls.Label {
                         text: i18n("Date format:")
+						visible:showDate.checked
                     }
 
                     QtControls.ComboBox {
                         id: dateFormat
                         enabled: showDate.checked
+                        visible:showDate.checked
                         textRole: "label"
                         model: [
                             {
@@ -199,6 +201,7 @@ QtLayouts.RowLayout {
                     } }
                     
                     QtLayouts.RowLayout {
+						visible:showDate.checked
 						QtControls.Label {
 		                        text: i18n("Date font size:")
 	                    }
