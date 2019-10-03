@@ -83,6 +83,8 @@ Item {
             
             height:timeLabel.height
             width:timeLabel.width
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
             x:timeLabel.x+width*0.05
             y:timeLabel.y+height*0.05
             font.family: timeLabel.font.family
@@ -588,7 +590,7 @@ Item {
                 family: plasmoid.configuration.fontFamily || theme.defaultFont.family
                 weight: plasmoid.configuration.boldText ? Font.Bold : theme.defaultFont.weight
                 italic: plasmoid.configuration.italicText
-                pointSize: 1024
+                pointSize: plasmoid.configuration.timeproport ? 1024 : plasmoid.configuration.timesize
             }style: Text.Raised;
 
             text: {

@@ -149,5 +149,18 @@
       <label>Date font size</label>
       <default>12</default>
     </entry>
+	<entry name="fontproport" type="Bool">
+      <label> </label>
+      <default>false</default>
+    </entry>
+	
+	<entry name="timesize" type="UInt">
+      <label>TIME font size</label>
+      <default>12</default>
+    </entry>
+	<entry name="timeproport" type="Bool">
+      <label> </label>
+      <default>true</default>
+    </entry>
   </group>
 </kcfg>

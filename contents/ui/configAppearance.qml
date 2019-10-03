@@ -50,6 +50,9 @@ Item {
     property string cfg_dateFormat: "shortDate"
     property alias cfg_use24hFormat: use24hFormat.checkedState
     
+    property alias cfg_timesize: timefontsize.value
+    property alias cfg_timeproport: timeproport.checked
+    
 //     property alias cfg_mincolor1: _min1.text
 //     property alias cfg_mincolor2: _min2.text
 //     property alias cfg_horacolor1: _hora1.text
@@ -132,6 +135,22 @@ QtLayouts.RowLayout {
                     id: italicCheckBox
                     text: i18n("Italic text")
                 }}
+                 QtLayouts.RowLayout {
+						QtControls.Label {
+		                        text: i18n("Time font size:")
+	                    }
+	                    QtControls.CheckBox {
+		                    id: timeproport
+		                    text: i18n("Proportional")
+		                }
+	                    SpinBox {
+		                    id: timefontsize
+							visible:! timeproport.checked
+		                    suffix: i18n("pt")
+		                    minimumValue: 2
+// 		                    maximumValue: 1000000
+		                }
+				}
             }
         }
 
