@@ -41,6 +41,7 @@ Item {
     property alias cfg_italicText: italicCheckBox.checked
     
     property alias cfg_datefontsize: datefontsize.value
+    property alias cfg_dateproport: dateproport.checked
 
     property alias cfg_showLocalTimezone: showLocalTimezone.checked
     property alias cfg_displayTimezoneAsCode: timezoneCodeRadio.checked
@@ -205,9 +206,13 @@ QtLayouts.RowLayout {
 						QtControls.Label {
 		                        text: i18n("Date font size:")
 	                    }
+	                    QtControls.CheckBox {
+		                    id: dateproport
+		                    text: i18n("Proportional")
+		                }
 	                    SpinBox {
 		                    id: datefontsize
-		                    
+		                    visible: !dateproport.checked
 		                    suffix: i18n("pt")
 		                    minimumValue: 2
 // 		                    maximumValue: 1000000

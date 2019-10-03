@@ -149,7 +149,7 @@
       <label>Date font size</label>
       <default>12</default>
     </entry>
-	<entry name="fontproport" type="Bool">
+	<entry name="dateproport" type="Bool">
       <label> </label>
       <default>false</default>
     </entry>
