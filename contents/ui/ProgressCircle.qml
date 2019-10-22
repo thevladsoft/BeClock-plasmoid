@@ -39,6 +39,7 @@ Item {
        NumberAnimation {
            duration: root.animationDuration
            easing.type: Easing.InOutCubic
+           from: root.arcBegin >=360 ? 0 : root.arcBegin
        }
     }
 
@@ -48,6 +49,7 @@ Item {
        NumberAnimation {
            duration: root.animationDuration
            easing.type: Easing.InOutCubic
+           from: root.arcEnd >=360 ? 0 : root.arcEnd
        }
     }
     

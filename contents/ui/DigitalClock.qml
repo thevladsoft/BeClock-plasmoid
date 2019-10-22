@@ -143,11 +143,11 @@ Item {
         colorCircle: secondcolor1
         colorBackground: "transparent"
         showBackground: true
-        arcBegin: 0
-        arcEnd: 180
+        arcBegin: Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")==0 ? 360 :  0
+        arcEnd: Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")==0 ? 360 :  Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")*6
         opacity: 0.7
         visible: secondsring
-        animationDuration: 500
+        animationDuration: 500//Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s") > 0 ? 500 : 0
      }
      ProgressCircle {
         id: recsec2
@@ -158,11 +158,11 @@ Item {
         colorCircle: secondcolor2
         colorBackground: "transparent"
         showBackground: true
-        arcBegin: 0.5
-        arcEnd: 181
+        arcBegin: Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")==0 ? 360 :  0.5
+        arcEnd: Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")==0 ? 360 :  Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")*6 + 0.5
         opacity: 0.7
         visible: secondsring
-        animationDuration: 500
+        animationDuration: 500//Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s") > 0 ? 500 : 0
      }
      
      ProgressCircle {
@@ -174,9 +174,10 @@ Item {
         colorCircle: mincolor1
         colorBackground: "transparent"
         showBackground: true
-        arcBegin: 0
-        arcEnd: 180
+        arcBegin: Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")==0 ? 360 :  0
+        arcEnd: Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")==0 ? 360 :  Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6 + 0
         opacity: 0.7
+        animationDuration: 1000//Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m") > 0 ? 1000 : 0
      }
      ProgressCircle {
         id: recmin2
@@ -187,9 +188,10 @@ Item {
         colorCircle: mincolor2
         colorBackground: "transparent"
         showBackground: true
-        arcBegin: 0.5
-        arcEnd: 181
+        arcBegin: Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")==0 ? 360 :  0.5
+        arcEnd: Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")==0 ? 360 :  Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6 + 0.5
         opacity: 0.7
+        animationDuration: 1000//Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m") > 0 ? 1000 : 0
      }
     
      ProgressCircle {
@@ -201,9 +203,10 @@ Item {
          colorCircle: horacolor1
          colorBackground: "transparent"
          showBackground: true
-         arcBegin: 0
-         arcEnd: 180
+         arcBegin: Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12==0  ? 360 :  0.5
+         arcEnd: Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12==0 ? 360 :  Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30 + 0
          opacity: 0.7
+         animationDuration: 1000
      }
      ProgressCircle {
         id: rechour2
@@ -214,9 +217,10 @@ Item {
         colorCircle: horacolor2
         colorBackground: "transparent"
         showBackground: true
-        arcBegin: 0.5
-        arcEnd: 180
+        arcBegin: Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12==0 ? 360 :  0.5
+        arcEnd: Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12==0 ? 360 :  Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30 + 0.5
         opacity: 0.7
+        animationDuration: 1000
      }
      
 
@@ -785,30 +789,30 @@ Item {
     {
         var doCorrections = false;
 //         print(Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "hap"))
-		if (Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m") == 0){
-					recmin.arcEnd = 360;
-					recmin.arcBegin = 360;
-					recmin2.arcEnd = 360;
-					recmin2.arcBegin = 360;
-			}else{
-				   if(Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m") == 1){
-					       recmin.animationDuration = 0;
-						   recmin.arcEnd = 0;
-						   recmin.arcBegin = 0;
-						   recmin2.animationDuration = 0;
-						   recmin2.arcEnd = 0;
-						   recmin2.arcBegin = 0;
-				   }
-				   recmin.animationDuration = 500;
-				   recmin.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6;
-				   recmin2.animationDuration = 500;
-				   recmin2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6+0.5;
-				   
-		}
+// 		if (Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m") == 0){
+// 					recmin.arcEnd = 360;
+// 					recmin.arcBegin = 360;
+// 					recmin2.arcEnd = 360;
+// 					recmin2.arcBegin = 360;
+// 			}else{
+// 				   if(Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m") == 1){
+// 					       recmin.animationDuration = 0;
+// 						   recmin.arcEnd = 0;
+// 						   recmin.arcBegin = 0;
+// 						   recmin2.animationDuration = 0;
+// 						   recmin2.arcEnd = 0;
+// 						   recmin2.arcBegin = 0;
+// 				   }
+// 				   recmin.animationDuration = 500;
+// 				   recmin.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6;
+// 				   recmin2.animationDuration = 500;
+// 				   recmin2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6+0.5;
+// 				   
+// 		}
 //         recmin.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6;
 //         recmin2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "m")*6+0.5;
         
-        if (secondsring){
+        /*if (secondsring){
 			if (Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s") == 0){
 					recsec.arcEnd = 360;
 					recsec.arcBegin = 360;
@@ -831,28 +835,28 @@ Item {
 			}
 //             recsec.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")*6;
 //             recsec2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "s")*6+0.5;
-        }
+        }*/
         
-        if (Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h") == 0){
-					rechour.arcEnd = 360;
-					rechour.arcBegin = 360;
-					rechour2.arcEnd = 360;
-					rechour2.arcBegin = 360;
-			}else{
-				   if(Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h") == 1){
-					       rechour.animationDuration = 0;
-						   rechour.arcEnd = 0;
-						   rechour.arcBegin = 0;
-						   rechour2.animationDuration = 0;
-						   rechour2.arcEnd = 0;
-						   rechour2.arcBegin = 0;
-				   }
-				   rechour.animationDuration = 500;
-				   rechour.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30;
-				   rechour2.animationDuration = 500;
-				   rechour2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30+0.5;
-				   
-		}
+//         if (Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h") == 0){
+// 					rechour.arcEnd = 360;
+// 					rechour.arcBegin = 360;
+// 					rechour2.arcEnd = 360;
+// 					rechour2.arcBegin = 360;
+// 			}else{
+// 				   if(Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h") == 1){
+// 					       rechour.animationDuration = 0;
+// 						   rechour.arcEnd = 0;
+// 						   rechour.arcBegin = 0;
+// 						   rechour2.animationDuration = 0;
+// 						   rechour2.arcEnd = 0;
+// 						   rechour2.arcBegin = 0;
+// 				   }
+// 				   rechour.animationDuration = 500;
+// 				   rechour.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30;
+// 				   rechour2.animationDuration = 500;
+// 				   rechour2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30+0.5;
+// 				   
+// 		}
 //         rechour.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30;
 //         rechour2.arcEnd = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "h")%12*30+0.5;
         
