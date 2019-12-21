@@ -95,7 +95,7 @@ Item {
             opacity: 0.5
 //             color: "black"
             color: plasmoid.configuration.textshadow
-            visible: plasmoid.configuration.textshadow == "transparent" ? 0 : 1
+            visible: plasmoid.configuration.textshadow == "transparent" || !plasmoid.configuration.showTime ? 0 : 1
 //             fontSize: timeLabel.fontSize
 //             font.size: timeLabel.font.size
 //             font.color:"black"
@@ -589,7 +589,8 @@ Item {
         Components.Label  {
             id: timeLabel
             color: plasmoid.configuration.textcolor
-            visible: plasmoid.configuration.textcolor == "transparent" ? 0 : 1
+//             visible: plasmoid.configuration.textcolor == "transparent" ? 0 : 1
+            visible: plasmoid.configuration.textcolor == "transparent" || !plasmoid.configuration.showTime ? 0 : 1
             font {
                 family: plasmoid.configuration.fontFamily || theme.defaultFont.family
                 weight: plasmoid.configuration.boldText ? Font.Bold : theme.defaultFont.weight

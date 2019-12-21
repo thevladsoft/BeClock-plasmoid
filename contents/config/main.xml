@@ -162,5 +162,9 @@
       <label> </label>
       <default>true</default>
     </entry>
+    <entry name="showTime" type="Bool">
+      <label>Whether the time should be shown.</label>
+      <default>true</default>
+    </entry>
   </group>
 </kcfg>

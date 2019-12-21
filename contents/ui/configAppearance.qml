@@ -51,6 +51,7 @@ Item {
     property string cfg_dateFormat: "shortDate"
     property alias cfg_use24hFormat: use24hFormat.checkedState
     
+    property alias cfg_showTime: showTime.checked
     property alias cfg_timesize: timefontsize.value
     property alias cfg_timeproport: timeproport.checked
     
@@ -92,6 +93,7 @@ Item {
             QtLayouts.Layout.fillWidth: true
             title: i18n("Font")
             flat: true
+            visible: showDate.checked || showTime.checked
 
             QtLayouts.GridLayout { // there's no FormLayout :(
                 columns: 2
@@ -136,28 +138,89 @@ QtLayouts.RowLayout {
                     id: italicCheckBox
                     text: i18n("Italic text")
                 }}
-                 QtLayouts.RowLayout {
-						QtControls.Label {
-		                        text: i18n("Time font size:")
-	                    }
-	                    QtControls.CheckBox {
-		                    id: timeproport
-		                    text: i18n("Proportional")
-		                }
-	                    SpinBox {
-		                    id: timefontsize
-							visible:! timeproport.checked
-		                    suffix: i18n("pt")
-		                    minimumValue: 2
-// 		                    maximumValue: 1000000
-		                }
-				}
+                 
+            }
+        }
+        QtControls.GroupBox {
+            QtLayouts.Layout.fillWidth: true
+            title: i18n("Time")
+            flat: true
+
+            QtLayouts.GridLayout { // there's no FormLayout :(
+                columns: 2
+                QtLayouts.Layout.fillWidth: true     
+                QtLayouts.ColumnLayout {
+                        anchors.left: parent.left
+                        QtControls.CheckBox {
+                                    id: showTime
+                                    text: i18n("Show time")
+                        }
+                        QtLayouts.ColumnLayout {
+                            anchors.left: parent.left
+                            visible: showTime.checked
+                            QtLayouts.RowLayout {
+//                                     visible: showTime.checked
+                                    QtControls.Label {
+                                            text: i18n("Time font size:")
+                                    }
+                                    QtControls.CheckBox {
+                                        id: timeproport
+                                        text: i18n("Proportional")
+                                    }
+                                    SpinBox {
+                                        id: timefontsize
+                                        visible:! timeproport.checked
+                                        suffix: i18n("pt")
+                                        minimumValue: 2
+                // 		                    maximumValue: 1000000
+                                    }
+                            }
+                            QtControls.CheckBox {
+                            id: showSeconds
+                            text: i18n("Show seconds")
+                        }
+
+                        QtControls.CheckBox {
+                            id: use24hFormat
+                            text: i18nc("Checkbox label; means 24h clock format, without am/pm", "Use 24-hour Clock")
+                        }
+        // QtLayouts.RowLayout {
+                        QtControls.CheckBox {
+                            id: showLocalTimezone
+                            text: i18n("Show local time zone")
+                        }
+                    QtLayouts.RowLayout {
+                        QtControls.Label {
+                            text: i18n("Display time zone as:")
+                        }
+
+                        QtControls.GroupBox {
+                            QtLayouts.Layout.fillWidth: true
+                            flat: true
+                            QtLayouts.ColumnLayout {
+
+                                QtControls.ExclusiveGroup { id: timezoneDisplayType }
+                            QtLayouts.RowLayout {
+                                QtControls.RadioButton {
+                                    id: timezoneCityRadio
+                                    text: i18n("Time zone city")
+                                    exclusiveGroup: timezoneDisplayType
+                                }
+
+                                QtControls.RadioButton {
+                                    id: timezoneCodeRadio
+                                    text: i18n("Time zone code")
+                                    exclusiveGroup: timezoneDisplayType
+                                }
+                            }}
+                } }
+               }}
             }
         }
 
         QtControls.GroupBox {
             QtLayouts.Layout.fillWidth: true
-            title: i18n("Information")
+            title: i18n("Date")
             flat: true
 
             QtLayouts.ColumnLayout {
@@ -219,45 +282,45 @@ QtLayouts.RowLayout {
 		                }
 					}
 
-                QtControls.CheckBox {
-                    id: showSeconds
-                    text: i18n("Show seconds")
-                }
-
-                QtControls.CheckBox {
-                    id: use24hFormat
-                    text: i18nc("Checkbox label; means 24h clock format, without am/pm", "Use 24-hour Clock")
-                }
+//                 QtControls.CheckBox {
+//                     id: showSeconds
+//                     text: i18n("Show seconds")
+//                 }
+// 
+//                 QtControls.CheckBox {
+//                     id: use24hFormat
+//                     text: i18nc("Checkbox label; means 24h clock format, without am/pm", "Use 24-hour Clock")
+//                 }
+// // QtLayouts.RowLayout {
+//                 QtControls.CheckBox {
+//                     id: showLocalTimezone
+//                     text: i18n("Show local time zone")
+//                 }
 // QtLayouts.RowLayout {
-                QtControls.CheckBox {
-                    id: showLocalTimezone
-                    text: i18n("Show local time zone")
-                }
-QtLayouts.RowLayout {
-                QtControls.Label {
-                    text: i18n("Display time zone as:")
-                }
-
-                QtControls.GroupBox {
-                    QtLayouts.Layout.fillWidth: true
-                    flat: true
-                    QtLayouts.ColumnLayout {
-
-                        QtControls.ExclusiveGroup { id: timezoneDisplayType }
-QtLayouts.RowLayout {
-                        QtControls.RadioButton {
-                            id: timezoneCityRadio
-                            text: i18n("Time zone city")
-                            exclusiveGroup: timezoneDisplayType
-                        }
-
-                        QtControls.RadioButton {
-                            id: timezoneCodeRadio
-                            text: i18n("Time zone code")
-                            exclusiveGroup: timezoneDisplayType
-                        }
-                    }}
-                } }
+//                 QtControls.Label {
+//                     text: i18n("Display time zone as:")
+//                 }
+// 
+//                 QtControls.GroupBox {
+//                     QtLayouts.Layout.fillWidth: true
+//                     flat: true
+//                     QtLayouts.ColumnLayout {
+// 
+//                         QtControls.ExclusiveGroup { id: timezoneDisplayType }
+// QtLayouts.RowLayout {
+//                         QtControls.RadioButton {
+//                             id: timezoneCityRadio
+//                             text: i18n("Time zone city")
+//                             exclusiveGroup: timezoneDisplayType
+//                         }
+// 
+//                         QtControls.RadioButton {
+//                             id: timezoneCodeRadio
+//                             text: i18n("Time zone code")
+//                             exclusiveGroup: timezoneDisplayType
+//                         }
+//                     }}
+//                 } }
 
                 QtLayouts.RowLayout {
 //                     QtControls.Label {
