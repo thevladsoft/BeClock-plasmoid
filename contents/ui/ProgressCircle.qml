@@ -19,6 +19,8 @@ Item {
     property real lineWidth: 20          // width of the line
     property string colorCircle: "#CC3333"
     property string colorBackground: "#779933"
+	
+	property bool colorGrad: false
 
     property alias beginAnimation: animationArcBegin.enabled
     property alias endAnimation: animationArcEnd.enabled
@@ -32,6 +34,8 @@ Item {
 	
 	onSizeChanged: canvas.requestPaint()
 	onLineWidthChanged: canvas.requestPaint()
+	
+	onColorGradChanged: canvas.requestPaint()
 
     Behavior on arcBegin {
        id: animationArcBegin
@@ -66,6 +70,12 @@ Item {
             var start = Math.PI * (parent.arcBegin / 180)
             var end = Math.PI * (parent.arcEnd / 180)
             ctx.reset()
+			
+			if(root.colorGrad){
+				var gradient = ctx.createConicalGradient(x, y, 0.);//createLinearGradient(0, 0, 100, 0);
+				gradient.addColorStop((1.-parent.arcEnd/360.), root.colorCircle);
+				gradient.addColorStop(1, Qt.lighter(root.colorCircle,1.7));//Qt.rgba(255, 255, 255, 0.1));
+			}
 
             if (root.isPie) {
                 if (root.showBackground) {
@@ -93,7 +103,7 @@ Item {
                 ctx.beginPath();
                 ctx.arc(x, y, (width / 2) - parent.lineWidth / 2, start, end, false)
                 ctx.lineWidth = root.lineWidth
-                ctx.strokeStyle = root.colorCircle
+                ctx.strokeStyle = root.colorGrad ? gradient : root.colorCircle
                 ctx.stroke()
             }
         }

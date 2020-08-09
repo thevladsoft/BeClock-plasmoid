@@ -138,6 +138,7 @@ Item {
         id: recsec
         y:timeLabel.width/2.-size/2.
         x:y
+        colorGrad: plasmoid.configuration.secgrad
         size: (plasmoid.configuration.secradius/100.)*parent.width//timeLabel.width * 1.15
         lineWidth: (plasmoid.configuration.secsize/100.)*0.5*parent.width
         colorCircle: secondcolor1
@@ -153,6 +154,7 @@ Item {
         id: recsec2
         y:timeLabel.width/2.-size/2.
         x:y
+        colorGrad: plasmoid.configuration.secgrad
         size: recsec.size//timeLabel.width * 1.15
         lineWidth: 0.25*recsec.lineWidth
         colorCircle: secondcolor2
@@ -169,6 +171,7 @@ Item {
         id: recmin
         y:timeLabel.width/2.-size/2.
         x:y
+        colorGrad: plasmoid.configuration.mingrad
         size: (plasmoid.configuration.minradius/100.)*parent.width//timeLabel.width
         lineWidth: (plasmoid.configuration.minsize/100.)*0.5*parent.width
         colorCircle: mincolor1
@@ -183,6 +186,7 @@ Item {
         id: recmin2
         y:timeLabel.width/2.-size/2.
         x:y
+        colorGrad: plasmoid.configuration.mingrad
         size: recmin.size//timeLabel.width
         lineWidth: 0.25*recmin.lineWidth
         colorCircle: mincolor2
@@ -199,6 +203,7 @@ Item {
          size: (plasmoid.configuration.hourradius/100.)*parent.width//timeLabel.width*0.85
          y: timeLabel.width/2.-size/2.
          x:y
+         colorGrad: plasmoid.configuration.hourgrad
          lineWidth: (plasmoid.configuration.hoursize/100.)*0.5*parent.width
          colorCircle: horacolor1
          colorBackground: "transparent"
@@ -213,6 +218,7 @@ Item {
         size: rechour.size//timeLabel.width*0.85
         y: timeLabel.width/2.-size/2.
         x:y
+        colorGrad: plasmoid.configuration.hourgrad
         lineWidth: 0.25*rechour.lineWidth
         colorCircle: horacolor2
         colorBackground: "transparent"

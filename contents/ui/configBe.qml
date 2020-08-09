@@ -49,6 +49,10 @@ Item {
     property alias cfg_showsecondsring: secondsring.checked
     property alias cfg_imagenbackground: imagenes.imagen
     property alias cfg_shadowbackground: shadowbackground.checked
+    
+    property alias cfg_hourgrad: hourgrad.checked
+    property alias cfg_mingrad: mingrad.checked
+    property alias cfg_secgrad: secgrad.checked
         
     property var logos: ["" ,"images/arch.png","images/debian.png","images/fedora.png","images/kde.png" ,"images/kubuntu.png","images/neon.png" ,"images/suse.png","images/ubuntu.png" ]
 
@@ -121,7 +125,7 @@ Item {
     QtControls.GroupBox {
         QtLayouts.Layout.fillWidth: true
         title: i18n("Text")
-        flat: true
+        flat: false
         QtLayouts.RowLayout {
             Button {
                 text: i18n("Main color")
@@ -147,86 +151,107 @@ Item {
     QtControls.GroupBox {
         QtLayouts.Layout.fillWidth: true
         title: i18n("Minute rings")
-        flat: true
-        QtLayouts.RowLayout {
-    //         QtControls.Label { text: i18n("Color del minutero")}
-        Button {
-            text: i18n("Main color")
-				iconName: "org.kde.plasma.colorpicker"
-				tooltip: "Click to choose"
-            onClicked: {colorDialog.boton = 0;colorDialog.color = _min1.text;colorDialog.visible = true;}
-        }          
-            QtControls.TextField {
-                id: _min1
-            }
-            Button {
-                text: i18n("Shadow color")
-				iconName: "org.kde.plasma.colorpicker"
-				tooltip: "Click to choose"
-                onClicked: {colorDialog.boton = 1;colorDialog.color = _min2.text;colorDialog.visible = true;}
-            }
-            QtControls.TextField {
-                id: _min2
-            }
-        }
+        flat: false
+        QtLayouts.ColumnLayout {
+	        QtLayouts.RowLayout {
+	    //         QtControls.Label { text: i18n("Color del minutero")}
+	        Button {
+	            text: i18n("Main color")
+					iconName: "org.kde.plasma.colorpicker"
+					tooltip: "Click to choose"
+	            onClicked: {colorDialog.boton = 0;colorDialog.color = _min1.text;colorDialog.visible = true;}
+	        }          
+	            QtControls.TextField {
+	                id: _min1
+	            }
+	            Button {
+	                text: i18n("Shadow color")
+					iconName: "org.kde.plasma.colorpicker"
+					tooltip: "Click to choose"
+	                onClicked: {colorDialog.boton = 1;colorDialog.color = _min2.text;colorDialog.visible = true;}
+	            }
+	            QtControls.TextField {
+	                id: _min2
+	            }
+	        }
+	        QtControls.CheckBox {
+			        id: mingrad
+			        text: i18n('Add a gradient effect')
+		    }
+		}
     }
       
     QtControls.GroupBox {
         QtLayouts.Layout.fillWidth: true
         title: i18n("Hour rings")
-        flat: true
-        QtLayouts.RowLayout {
-            Button {
-                text: i18n("Main color")
-				iconName: "org.kde.plasma.colorpicker"
-				tooltip: "Click to choose"
-                onClicked: {colorDialog.boton = 2;colorDialog.color = _hora1.text;colorDialog.visible = true;}
-            }
-            QtControls.TextField {
-                id: _hora1
-            }
-            Button {
-                text: i18n("Shadow color")
-				iconName: "org.kde.plasma.colorpicker"
-				tooltip: "Click to choose"
-                onClicked: {colorDialog.boton = 3;colorDialog.color = _hora2.text;colorDialog.visible = true;}
-            }
-            QtControls.TextField {
-                id: _hora2
-            }
-        }
+        flat: false
+        QtLayouts.ColumnLayout {
+	        QtLayouts.RowLayout {
+	            Button {
+	                text: i18n("Main color")
+					iconName: "org.kde.plasma.colorpicker"
+					tooltip: "Click to choose"
+	                onClicked: {colorDialog.boton = 2;colorDialog.color = _hora1.text;colorDialog.visible = true;}
+	            }
+	            QtControls.TextField {
+	                id: _hora1
+	            }
+	            Button {
+	                text: i18n("Shadow color")
+					iconName: "org.kde.plasma.colorpicker"
+					tooltip: "Click to choose"
+	                onClicked: {colorDialog.boton = 3;colorDialog.color = _hora2.text;colorDialog.visible = true;}
+	            }
+	            QtControls.TextField {
+	                id: _hora2
+	            }
+	        }
+	        QtControls.CheckBox {
+			        id: hourgrad
+			        text: i18n('Add a gradient effect')
+		    }
+		}
     }
         
-    QtControls.CheckBox {
-        id: secondsring
-        text: i18n('Show a ring for the seconds')
-    }
-    
+        
     QtControls.GroupBox {
-        QtLayouts.Layout.fillWidth: true
-        title: i18n("Seconds rings")
-        flat: true
-        visible: secondsring.checked
-        QtLayouts.RowLayout {
-            Button {
-                text: i18n("Main color")
-				iconName: "org.kde.plasma.colorpicker"
-				tooltip: "Click to choose"
-                onClicked: {colorDialog.boton = 4;colorDialog.color = _seconds1.text;colorDialog.visible = true;}
-            }
-            QtControls.TextField {
-                id: _seconds1
-            }
-            Button {
-                text: i18n("Shadow color")
-				iconName: "org.kde.plasma.colorpicker"
-				tooltip: "Click to choose"
-                onClicked: {colorDialog.boton = 5;colorDialog.color = _seconds2.text;colorDialog.visible = true;}
-            }
-            QtControls.TextField {
-                id: _seconds2
-            }
-        }
+		QtLayouts.Layout.fillWidth: true
+        title: secondsring.checked ? i18n("Seconds rings"): ""
+        flat: !secondsring.checked
+		QtLayouts.ColumnLayout {
+			QtControls.CheckBox {
+		        id: secondsring
+		        text: i18n('Show a ring for the seconds')
+		    }
+	        
+	//         visible: secondsring.checked
+	        QtLayouts.RowLayout {
+				visible: secondsring.checked
+	            Button {
+	                text: i18n("Main color")
+					iconName: "org.kde.plasma.colorpicker"
+					tooltip: "Click to choose"
+	                onClicked: {colorDialog.boton = 4;colorDialog.color = _seconds1.text;colorDialog.visible = true;}
+	            }
+	            QtControls.TextField {
+	                id: _seconds1
+	            }
+	            Button {
+	                text: i18n("Shadow color")
+					iconName: "org.kde.plasma.colorpicker"
+					tooltip: "Click to choose"
+	                onClicked: {colorDialog.boton = 5;colorDialog.color = _seconds2.text;colorDialog.visible = true;}
+	            }
+	            QtControls.TextField {
+	                id: _seconds2
+	            }
+	        }
+	        QtControls.CheckBox {
+		        id: secgrad
+		        visible: secondsring.checked
+		        text: i18n('Add a gradient effect')
+		    }
+		}
     }
     
     QtControls.Label { text: i18n("You can write 'transparent' as the color\n")}

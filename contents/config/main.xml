@@ -119,6 +119,20 @@
       <default>10</default>
     </entry>
 	
+	<entry name="mingrad" type="Bool">
+      <label>Gradient of mins.</label>
+      <default>false</default>
+    </entry>
+	<entry name="hourgrad" type="Bool">
+      <label>Gradient of hours.</label>
+      <default>false</default>
+    </entry>
+	<entry name="secgrad" type="Bool">
+      <label>Gradient of secs.</label>
+      <default>false</default>
+    </entry>
+	
+	
 	<entry name="minradius" type="UInt">
       <label>Radius of mins.</label>
       <default>85</default>
